@@ -1,4 +1,193 @@
-.quizz_container{
+
+//Import Variables
+
+@use "./variables/variables.scss" as * ;
+
+
+*{
+    background-color: $background;
+}
+
+.quizzContainer{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 70px;
+    height: 100vh;
+}
+
+//stepper component
+
+.stepperComponent{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    position: fixed;
+    top: 5%;
+    
+    div{
+        background-color: $dark;
+        color: $text;
+        padding: 10px;
+        width: 15px;
+        border-radius: 50%;
+        text-align: center;
+        position: relative;
+
+        &::after{
+            content: "";
+            width: 222px;
+            height: 5px;
+            background-color: $dark;
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
+        }
+
+        &.step1::after{
+            width: 0;
+            height: 0;
+        }
+
+        &.active{
+            background-color: $buttons;
+
+            span{
+                background-color: $buttons;
+            }
+
+            &::after{
+                background-color: $buttons;
+            }
+        }
+
+        span{
+            background-color: $dark;
+        }
+        
+        i{
+            background-color: $buttons;
+        }
+    }
+
+
+}
+
+.titlesStepper{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    color: $text;
+    position: fixed;
+    top: 15%;
+}
+
+//rules
+.quizzContainer{
+    .rules{
+        display: block;
+        color: $text;
+        border: 2px solid $content;
+        background-color: $content;
+        padding: 5px 10px;
+        border-radius: 10px; 
+        width: 40%;
+    }
+
+    .titles{
+        background-color: $content;
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+    }
+
+    button{
+        background-color: $buttons;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: none;
+        color: $text;
+        border-radius: 5px;
+
+    }
+
+    button:hover{
+        background-color: $buttonsFocus;
+        cursor: pointer;
+    }
+
+    .next_button{
+        background-color: $content;
+        display: flex;
+        justify-content: end;
+    }
+
+    p{
+        background-color: $content;
+    }
+}
+
+// questions
+.quizzContainer{
+    .questions{
+        @extend .rules ;
+        display: none;
+        margin-top: 20px;
+
+        .answers{
+            background-color: $content;
+            margin: 10px 10px;
+        }
+
+        label{
+            background-color: $content;
+        }
+
+        .questionsAnswers{
+            background-color: $content;
+            display: flex;
+            justify-content: center;
+        }
+
+        #currentQuestion{
+            background-color: $content;
+        }
+
+        #maxQuestions{
+            background-color: $content;
+        }
+
+        .question{
+            background-color: $content;
+            padding: 10px 20px;
+        }
+
+        .next_button_question{
+            background-color: $dark !important;
+            margin-right: 5px
+        }
+
+    }
+
+    
+}
+
+//result
+.quizzContainer{
+    .result{
+        @extend .rules ;
+        display: none;
+
+        .score{
+            background-color: $content;
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px
+        }
+
+        .progressBarComponent{
+            @extend .score ;
+        }
+    }
 }

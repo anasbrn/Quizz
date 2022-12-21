@@ -1,4 +1,143 @@
-.quizz_container {
+* {
+  background-color: #333333;
+}
+
+.quizzContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 70px;
+  height: 100vh;
+}
+
+.stepperComponent {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  position: fixed;
+  top: 5%;
+}
+.stepperComponent div {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  width: 15px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+}
+.stepperComponent div::after {
+  content: "";
+  width: 222px;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+}
+.stepperComponent div.step1::after {
+  width: 0;
+  height: 0;
+}
+.stepperComponent div.active {
+  background-color: #23BE75;
+}
+.stepperComponent div.active span {
+  background-color: #23BE75;
+}
+.stepperComponent div.active::after {
+  background-color: #23BE75;
+}
+.stepperComponent div span {
+  background-color: black;
+}
+.stepperComponent div i {
+  background-color: #23BE75;
+}
+
+.titlesStepper {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  color: white;
+  position: fixed;
+  top: 15%;
+}
+
+.quizzContainer .rules, .quizzContainer .result, .quizzContainer .questions {
+  display: block;
+  color: white;
+  border: 2px solid #555555;
+  background-color: #555555;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 40%;
+}
+.quizzContainer .titles {
+  background-color: #555555;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+.quizzContainer button {
+  background-color: #23BE75;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+.quizzContainer button:hover {
+  background-color: #09834a;
+  cursor: pointer;
+}
+.quizzContainer .next_button {
+  background-color: #555555;
+  display: flex;
+  justify-content: end;
+}
+.quizzContainer p {
+  background-color: #555555;
+}
+
+.quizzContainer .questions {
+  display: none;
+  margin-top: 20px;
+}
+.quizzContainer .questions .answers {
+  background-color: #555555;
+  margin: 10px 10px;
+}
+.quizzContainer .questions label {
+  background-color: #555555;
+}
+.quizzContainer .questions .questionsAnswers {
+  background-color: #555555;
+  display: flex;
+  justify-content: center;
+}
+.quizzContainer .questions #currentQuestion {
+  background-color: #555555;
+}
+.quizzContainer .questions #maxQuestions {
+  background-color: #555555;
+}
+.quizzContainer .questions .question {
+  background-color: #555555;
+  padding: 10px 20px;
+}
+.quizzContainer .questions .next_button_question {
+  background-color: black !important;
+  margin-right: 5px;
+}
+
+.quizzContainer .result {
+  display: none;
+}
+.quizzContainer .result .score, .quizzContainer .result .progressBarComponent {
+  background-color: #555555;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
 }/*# sourceMappingURL=style.css.map */

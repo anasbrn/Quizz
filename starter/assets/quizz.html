@@ -5,26 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/starter/assets/style/style.css">
-    <title>Questions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>QuizzYD</title>
 </head>
-<body>
+<body class="">
+    
 
-    <div class="quizz_container">
-        <div class="rules">
-            aaa
+    <div class="quizzContainer">
+
+        <div class="stepperComponent">
+            <div class="step1 active"><span><i class="fa fa-check"></i></span></div>
+            <div id="step2" class="step2"><i id="checkStep2" class="fa"></i><span id="step2Value">2</span></div>
+            <div id="step3" class="step3"><i id="checkStep3" class="fa"></i><span id="step3Value">3</span></div>
+        </div>
+        <div class="titlesStepper">
+            <div class="">Rules</div>
+            <div class="">Questions</div>
+            <div class="">Result</div>
+        </div>
+        
+
+        <div id="rules" class="rules">
+            <div class="titles">QuizzYD Rules</div>
+            <p>1. You have 30 secondes in every question</p>
+            <p>2. You can't back into the previous question if you click "Next"</p>
+            <p>3. You can't see your score until the end of the quizz</p>
+            <p>4. You have 20 points for every correct question</p>
+            <div  class="next_button">
+                <button type="button" onclick="switchFromRulesToQuestions(); allQuestions(); stepperCompenantStep2()">Next</button>
+            </div>
         </div>
 
-        <div class="questions">
+        <div id="questions" class="questions">
+            <div class="titles">Choose the correct answer</div>
 
+            <div id="question" class="question">What is php?</div>
+
+            <div class="answers">
+                <input type="radio" name="answer" id="a_answer">
+                <label for="a_answer" id="a">What is PHP</label>
+            </div>
+
+            <div class="answers">
+                <input type="radio" name="answer" id="b_answer">
+                <label for="b_answer" id="b">What is PHP</label>
+            </div>
+
+            <div class="answers">
+                <input type="radio" name="answer" id="c_answer">
+                <label for="c_answer" id="c">What is PHP</label>
+            </div>
+
+            <div class="answers">
+                <input type="radio" name="answer" id="d_answer">
+                <label for="d_answer" id="d">What is PHP</label>
+            </div>
+
+            <div class="questionsAnswers">
+                <span id="currentQuestion"></span> / <span id="maxQuestions">5</span>
+            </div>
+
+            <div class="next_button">
+                <button id="nextQuestion" class="next_button_question" onclick="allQuestions()">Next question</button>
+                <button onclick="switchFromQuestionsToResult(); stepperCompenantStep3()">Submit</button>
+            </div>
         </div>
 
-        <div class="result">
-
+        <div id="result" class="result">
+            <div class="titles">Completed! You have passed the quizz</div>
+            <div class="score">Your score is</div>
+            <div class="progressBarComponent">----------</div>
         </div>
 
         <div>
-            <button id="next_step">Next</button>
+            <!-- <button id="next_step">Next</button> -->
         </div>
     </div>
+
+    <script src="/starter/assets/script/data.js"></script>
+    <script src="/starter/assets/script/main.js"></script>
 </body>
 </html>
