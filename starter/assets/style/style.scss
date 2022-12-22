@@ -6,6 +6,7 @@
 
 *{
     background-color: $background;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .quizzContainer{
@@ -13,7 +14,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 70px;
     height: 100vh;
 }
 
@@ -37,12 +37,12 @@
 
         &::after{
             content: "";
-            width: 222px;
+            width: 13.75rem;
             height: 5px;
             background-color: $dark;
             position: absolute;
-            right: 30px;
-            bottom: 15px;
+            right: 2rem;
+            bottom: 1rem;
         }
 
         &.step1::after{
@@ -52,13 +52,18 @@
 
         &.active{
             background-color: $buttons;
+            transition: .6s;
 
-            span{
-                background-color: $buttons;
-            }
+            // span{
+            //     background-color: $buttons;
+            //     transition: .6s;
+
+            // }
 
             &::after{
                 background-color: $buttons;
+                transition: .6s;
+
             }
         }
 
@@ -73,6 +78,30 @@
 
 
 }
+
+//progress Bar
+.progressBar{
+    // display: none;
+    width: 40%;
+    height: 3em;
+    background-color: $content;
+    border-radius: 10px;
+    color: $text;
+    position: fixed;
+    top: 80%;
+
+    .progressBarLevel{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        background-color: $buttons;
+        height: 100%;
+        width: 10%;
+        border: 10px;
+    }
+}
+
+
 
 .titlesStepper{
     display: flex;
@@ -93,6 +122,20 @@
         padding: 5px 10px;
         border-radius: 10px; 
         width: 40%;
+        box-shadow: 2px 3px 15px #0003;
+        animation-name: display;
+        animation-duration: 0.6s;
+
+        @keyframes display {
+            from {
+                transform: scale(0);
+            }
+
+            to{
+                transform: scale(1);
+            }
+        }
+        
     }
 
     .titles{
@@ -100,6 +143,7 @@
         display: flex;
         justify-content: center;
         margin: 30px 0;
+        font-weight: bold;
     }
 
     button{
@@ -128,12 +172,37 @@
     }
 }
 
+//counter start quizz
+#counter{
+    display: none;
+    border: 2px solid $content;
+    background-color: $content;
+    padding: 5px 10px;
+    border-radius: 10px; 
+    width: 40%;
+    box-shadow: 2px 3px 15px #0003;
+    
+
+    span{
+        background-color: $content ;
+        display: block;
+        width: 100%;
+        margin: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        text-align: center;
+        font-size: 150px;
+        color: $text
+    }
+}
+
 // questions
 .quizzContainer{
     .questions{
         @extend .rules ;
         display: none;
         margin-top: 20px;
+     
 
         .answers{
             background-color: $content;
@@ -173,6 +242,48 @@
     
 }
 
+//loading questions
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text;
+    border: 2px solid $content;
+    background-color: $content;
+    padding: 5px 10px;
+    border-radius: 10px; 
+    width: 40%;
+    height: 50%;
+    box-shadow: 2px 3px 15px #0003;
+}
+
+.loading_questions {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: $content;
+  }
+  .loading_questions:after {
+    content: " ";
+    display: block;
+    // background-color: $content;
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid $buttons;
+    border-color: $buttons transparent $buttons transparent;
+    animation: loading_questions 1.2s linear infinite;
+  }
+  @keyframes loading_questions {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 //result
 .quizzContainer{
     .result{

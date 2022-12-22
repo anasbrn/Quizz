@@ -5,7 +5,7 @@ let quizzQuestions = [
         b: "Processor High Performance",
         c: "Private Hypertext Processor",
         d: "All the above are incorrect",
-        answer: "a",
+        answer: 1,
     },
 
     {
@@ -14,7 +14,7 @@ let quizzQuestions = [
         b: "$this->",
         c: "classe()",
         d: "return()",
-        answer: "b", 
+        answer: 2, 
     },
 
     {
@@ -23,7 +23,7 @@ let quizzQuestions = [
         b: "desc()",
         c: "reverse()",
         d: "rsort()",
-        answer: "d", 
+        answer: 4, 
     },
 
     {
@@ -32,7 +32,7 @@ let quizzQuestions = [
         b: "stop the script",
         c: "come out of a loop",
         d: "bypass an error",
-        answer: "b", 
+        answer: 2, 
     },
 
     {
@@ -41,7 +41,7 @@ let quizzQuestions = [
         b: "session_id()",
         c: "get_session()",
         d: "$_SESSION['ID']",
-        answer: "b", 
+        answer: 2, 
     },
 ]
 

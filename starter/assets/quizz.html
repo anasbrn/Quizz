@@ -14,15 +14,19 @@
     <div class="quizzContainer">
 
         <div class="stepperComponent">
-            <div class="step1 active"><span><i class="fa fa-check"></i></span></div>
-            <div id="step2" class="step2"><i id="checkStep2" class="fa"></i><span id="step2Value">2</span></div>
-            <div id="step3" class="step3"><i id="checkStep3" class="fa"></i><span id="step3Value">3</span></div>
+            <div class="step1 active"><i class="fa fa-check"></i></div>
+            <div id="step2" class="step2">2</div>
+            <div id="step3" class="step3">3</div>
         </div>
         <div class="titlesStepper">
             <div class="">Rules</div>
             <div class="">Questions</div>
             <div class="">Result</div>
         </div>
+        
+        <!-- <div class="progressBar" id="progressBar">
+            <div class="progressBarLevel"></div>
+        </div> -->
         
 
         <div id="rules" class="rules">
@@ -32,8 +36,12 @@
             <p>3. You can't see your score until the end of the quizz</p>
             <p>4. You have 20 points for every correct question</p>
             <div  class="next_button">
-                <button type="button" onclick="switchFromRulesToQuestions(); allQuestions(); stepperCompenantStep2()">Next</button>
+                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2()">Start Quizz</button>
             </div>
+        </div>
+
+        <div id="counter">
+            <span id="secondes">5</span>
         </div>
 
         <div id="questions" class="questions">
@@ -42,23 +50,23 @@
             <div id="question" class="question">What is php?</div>
 
             <div class="answers">
-                <input type="radio" name="answer" id="a_answer">
-                <label for="a_answer" id="a">What is PHP</label>
+                <input type="radio" name="answer" id="1" class="radio">
+                <label for="1" id="a" class="answers">What is PHP</label>
             </div>
 
             <div class="answers">
-                <input type="radio" name="answer" id="b_answer">
-                <label for="b_answer" id="b">What is PHP</label>
+                <input type="radio" name="answer" id="2" class="radio">
+                <label for="2" id="b" class="answers">What is PHP</label>
             </div>
 
             <div class="answers">
-                <input type="radio" name="answer" id="c_answer">
-                <label for="c_answer" id="c">What is PHP</label>
+                <input type="radio" name="answer" id="3" class="radio">
+                <label for="3" id="c" class="answers">What is PHP</label>
             </div>
 
             <div class="answers">
-                <input type="radio" name="answer" id="d_answer">
-                <label for="d_answer" id="d">What is PHP</label>
+                <input type="radio" name="answer" id="4" class="radio">
+                <label for="4" id="d" class="answers">What is PHP</label>
             </div>
 
             <div class="questionsAnswers">
@@ -66,23 +74,24 @@
             </div>
 
             <div class="next_button">
-                <button id="nextQuestion" class="next_button_question" onclick="allQuestions()">Next question</button>
-                <button onclick="switchFromQuestionsToResult(); stepperCompenantStep3()">Submit</button>
+                <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions();  allQuestions()">Next question</button>
+                <button onclick="loadingResult(); switchFromQuestionsToResult(); stepperCompenantStep3(); determineTheCorrectanswer()">Submit</button>
             </div>
+        </div>
+
+        <div id="loading" class="">
+            <div id="loading_questions" class="loading_questions" style="display: none;"></div>
         </div>
 
         <div id="result" class="result">
             <div class="titles">Completed! You have passed the quizz</div>
             <div class="score">Your score is</div>
-            <div class="progressBarComponent">----------</div>
-        </div>
-
-        <div>
-            <!-- <button id="next_step">Next</button> -->
+            <div class="progressBarComponent" id="progressBar">----------</div>
         </div>
     </div>
 
     <script src="/starter/assets/script/data.js"></script>
     <script src="/starter/assets/script/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>
