@@ -23,6 +23,10 @@
             <div class="">Questions</div>
             <div class="">Result</div>
         </div>
+
+        <div class="bar" id="bar">
+            <div class="barLevel"></div>
+        </div>
         
         <!-- <div class="progressBar" id="progressBar">
             <div class="progressBarLevel"></div>
@@ -40,8 +44,10 @@
             </div>
         </div>
 
+        
+
         <div id="counter">
-            <span id="secondes">5</span>
+            <span id="secondes">3</span>
         </div>
 
         <div id="questions" class="questions">
@@ -74,8 +80,8 @@
             </div>
 
             <div class="next_button">
-                <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions();  allQuestions()">Next question</button>
-                <button onclick="loadingResult(); switchFromQuestionsToResult(); stepperCompenantStep3(); determineTheCorrectanswer()">Submit</button>
+                <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
+                <button onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
             </div>
         </div>
 
@@ -86,7 +92,13 @@
         <div id="result" class="result">
             <div class="titles">Completed! You have passed the quizz</div>
             <div class="score">Your score is</div>
-            <div class="progressBarComponent" id="progressBar">----------</div>
+            <div class="barResult">
+                <div class="barResultLevel" id="barResultLevel"></div>
+            </div>
+            <div class="answersFinal">
+                <div class="correctAnswers" id="correctAnswers">Correct answers: </div>
+                <div class="wrongAnswers" id="wrongAnswers">Wrong answers: </div>
+            </div>
         </div>
     </div>
 

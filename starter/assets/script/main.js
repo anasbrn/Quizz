@@ -10,58 +10,84 @@ function switchFromRulesToCounter(){
 
 function switchFromQuestionsToResult(){
     document.getElementById('questions').style.display = "none" ;
-    document.getElementById('result').style.display = "block" ;
+    document.getElementById('loading_questions').style.display = "block" ;
+    document.getElementById('loading').classList.add('loading') ;
+    
+    
+    setTimeout(function() {
+        $('#bar').fadeOut('100');
+    }, 3000);
 
+    $('#loading').fadeIn('100');
+
+    setTimeout(function() {
+        $('#loading').fadeOut('100');
+    }, 3000);
+
+    setTimeout(function() {
+        $('#result').fadeIn('100');
+    }, 3400);
 }
 
-timeLeft = 5;
+timeLeft = 3;
 
 function countdown() {
 	timeLeft--;
 	document.getElementById("secondes").innerHTML = String( timeLeft );
 	if (timeLeft > 0) {
-		setTimeout(countdown, 1000);
+		setTimeout(countdown, 600);
 	}
 
     else{
         document.getElementById('secondes').innerText = "Start!" ;
         document.getElementById('counter').style.display = "none" ;
         document.getElementById('questions').style.display = "block" ;
+        document.getElementById('bar').style.display = "block" ;
     }
 
 };
 
-// timeLeft = 2;
 
 function loadingQuestions(){
     document.getElementById('questions').style.display = "none" ;
     document.getElementById('loading_questions').style.display = "block" ;
     document.getElementById('loading').classList.add('loading') ;
     
-    $('#loading').fadeIn('');
+    $('#loading').fadeIn('100');
     const timeOut = setTimeout(function() {
-        $('#questions').fadeIn('');
-        $('#loading').fadeOut('');
+        $('#questions').fadeIn('100');
+    }, 1400);
+
+    const timeOut2 = setTimeout(function() {
+        $('#loading').fadeOut('100');
     }, 1000);
 }
 
-function loadingResult(){
-    document.getElementById('result').style.display = "none" ;
-    document.getElementById('loading_questions').style.display = "block" ;
-    document.getElementById('loading').classList.add('loading') ;
+function changeProgress(maxValue,finalValue){
+    const barLevel = document.querySelector('.barLevel');
+    
+    barLevel.style.width =`${(maxValue * 100) / finalValue}%`;
+    barLevel.innerHTML   =`${Number((maxValue * 100) / finalValue).toFixed(2)}%`;
+    
+}
 
-    $('#loading').fadeIn('');
-    $('#result').fadeOut('');
-    const timeOut = setTimeout(function() {
-        $('#result').fadeIn('');
-        $('#loading').fadeOut('');
-    }, 1000);
+function finalScore(maxScore, length) {
+    const barResultLevel = document.querySelector('.barResultLevel');
+    
+    barResultLevel.style.width =`${(maxScore * 100) / length}%`;
+    barResultLevel.innerHTML   =`${Number((maxScore * 100) / length).toFixed(2)}%`;
+    
 }
 
 
+questionC = 1 ;
 
+function progressBar(){
 
+    changeProgress(questionC, quizzQuestions.length) ;
+    questionC++ ;
 
+}
 
 
 function allQuestions(){
@@ -93,6 +119,7 @@ function deselectChosenQuestions(){
 }
 
 let score = 0 ;
+let wrong = 0 ;
 let currnetQ = -1 ;
 
 function determineTheCorrectanswer(){
@@ -116,11 +143,20 @@ function determineTheCorrectanswer(){
             score++ ;
         }
 
-        document.getElementById('progressBar').innerText = score +'/'+ quizzQuestions.length ;
+        else{
+            wrong++ ;
+        }
+
+        finalScore(score, quizzQuestions.length) ;
+        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
+        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
+ 
     }
 
     if(score == 0){
-        document.getElementById('progressBar').innerText = 0 + '/' + quizzQuestions.length ;
+        finalScore(0, quizzQuestions.length) ;
+        document.getElementById('wrongAnswers').innerText = quizzQuestions.length ; 
+
     }
 
 }
@@ -139,11 +175,5 @@ function stepperCompenantStep3(){
     
 }
 
-// const progressBarLevel = document.querySelector('.progressBarLevel'); 
-
-// function progressBar(maxValue, finalValue){
-//     progressBarLevel.style.width = `${(maxValue * 100) / finalValue}%`
-//     progressBarLevel.innerHTML = `${Number((maxValue * 100) / finalValue).toFixed(2)}%` ;
-// }
 
 

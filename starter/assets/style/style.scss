@@ -54,12 +54,6 @@
             background-color: $buttons;
             transition: .6s;
 
-            // span{
-            //     background-color: $buttons;
-            //     transition: .6s;
-
-            // }
-
             &::after{
                 background-color: $buttons;
                 transition: .6s;
@@ -78,29 +72,6 @@
 
 
 }
-
-//progress Bar
-.progressBar{
-    // display: none;
-    width: 40%;
-    height: 3em;
-    background-color: $content;
-    border-radius: 10px;
-    color: $text;
-    position: fixed;
-    top: 80%;
-
-    .progressBarLevel{
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        background-color: $buttons;
-        height: 100%;
-        width: 10%;
-        border: 10px;
-    }
-}
-
 
 
 .titlesStepper{
@@ -122,6 +93,7 @@
         padding: 5px 10px;
         border-radius: 10px; 
         width: 40%;
+        margin-top: 3rem !important;
         box-shadow: 2px 3px 15px #0003;
         animation-name: display;
         animation-duration: 0.6s;
@@ -191,7 +163,7 @@
         padding-top: 60px;
         padding-bottom: 60px;
         text-align: center;
-        font-size: 150px;
+        font-size: 100px;
         color: $text
     }
 }
@@ -242,8 +214,35 @@
     
 }
 
-//loading questions
+//progress bar
+.bar {
+    display: none;
+    width: 40%;
+    margin-top: 2rem;
+    height: 1rem;
+    background-color: $dark;
+    border-radius: 10px;
+    color: $text;
+    position: fixed;
+    bottom: 78%;
+  }
+  
+  .barLevel {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    // margin-left: 25px;
+    background-color: $buttons;
+    transition: 1s ease 0.3s;
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+}
 
+
+//loading questions
 .loading{
     display: flex;
     justify-content: center;
@@ -253,6 +252,7 @@
     background-color: $content;
     padding: 5px 10px;
     border-radius: 10px; 
+    margin-top: 3rem !important;
     width: 40%;
     height: 50%;
     box-shadow: 2px 3px 15px #0003;
@@ -284,6 +284,7 @@
       transform: rotate(360deg);
     }
   }
+
 //result
 .quizzContainer{
     .result{
@@ -297,8 +298,42 @@
             padding: 10px 20px
         }
 
-        .progressBarComponent{
-            @extend .score ;
+        .answersFinal{
+            margin: 1rem 0;
+            background-color: $content;
+            display: flex;
+            justify-content: space-between;
+
+            .correctAnswers{
+                margin-bottom: 1rem;
+                background-color: $content;
+            }
+
+            .wrongAnswers{
+                background-color: $content;
+            }
+        }
+
+        //bar result
+        .barResult{
+            width: 100%;
+            height: 16px;
+            background-color: $dark;
+            border-radius: 10px;
+            color: $text;
+
+            .barResultLevel {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1rem;
+                background-color: $buttons;
+                transition: 1s ease 0.3s;
+                height: 100%;
+                width: 0%;
+                border-radius: 10px;
+            }
         }
     }
 }
