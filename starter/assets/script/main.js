@@ -3,6 +3,71 @@ const newQuestion = quizzQuestions.sort((a, b) => 0.5 - Math.random());
 let currnetQuestion = -1;
 
 
+function lightmode(){
+
+    let lightmode = document.getElementById('lightmode') ;
+    let darkmode  = document.getElementById('darkmode') ;
+    let background = document.getElementById('homepage') ;
+    let texts       = document.getElementById('homeContent') ;
+    let breadcrumbs = document.getElementById('breadcrumbs') ;
+    let getStarted = document.getElementById('getStarted') ;
+
+    background.style.backgroundImage = "linear-gradient(to left, #4ade80 , #fff)" ;
+    getStarted.style.backgroundImage = "linear-gradient(to left, #09834a , #4ade80)" ;
+    texts.style.color = "#333" ;
+    breadcrumbs.style.color = "#333" ;
+    lightmode.style.display = "none" ;
+    darkmode.style.display = "block" ;
+}
+
+
+function darkmode(){
+    
+    let texts       = document.getElementById('homeContent') ;
+    let lightmode = document.getElementById('lightmode') ;
+    let darkmode  = document.getElementById('darkmode') ;
+    let background = document.getElementById('homepage') ;
+    let breadcrumbs = document.getElementById('breadcrumbs') ;
+    let getStarted = document.getElementById('getStarted') ;
+
+
+
+        background.style.backgroundImage = "linear-gradient(to right, black , #23BE75)"
+        getStarted.style.backgroundImage = "linear-gradient(to left, #23BE75 , #09834a)" ;
+        texts.style.color = "white" ;
+        breadcrumbs.style.color = "white" ;
+        lightmode.style.display = "block" ;
+        darkmode.style.display = "none" ;
+}
+
+
+function loadingQuizz(){
+    // document.getElementById('homeContent').style.display = "none" ;
+    setTimeout(function() {
+        $('#homeContent').fadeOut('100');
+        $('#homepage').fadeOut('100');
+    }, 100);
+
+    window.setTimeout(function(){
+        window.location.assign('/starter/assets/quizz.html') ;
+    },500) ;
+
+
+    
+}
+
+function getStarted(){
+    document.getElementById('loadingQuizz').style.display = "block" ;
+    document.getElementById('userName').style.display = "none" ;
+    
+    setTimeout(function() {
+        $('#loadingQuizz').fadeOut('100');
+    }, 3000);
+    setTimeout(function() {
+        $('#rules').fadeIn('100');
+    }, 3500);
+    
+}
 
 
 
@@ -13,9 +78,10 @@ function switchFromRulesToCounter(){
 
 
 function switchFromQuestionsToResult(){
-    document.getElementById('questions').style.display = "none" ;
+    document.getElementById('questionsAnswers').style.display = "none" ;
     document.getElementById('loading_questions').style.display = "block" ;
     document.getElementById('loading').classList.add('loading') ;
+    document.getElementById('submit').setAttribute("disabled", "")
     
     
     setTimeout(function() {
@@ -26,6 +92,7 @@ function switchFromQuestionsToResult(){
 
     setTimeout(function() {
         $('#loading').fadeOut('100');
+        $('#questions').fadeOut('100');
     }, 3000);
 
     setTimeout(function() {
@@ -51,15 +118,47 @@ function countdown() {
 
 };
 
+// timeCount = 30 ;
+
+function countDownQuestions(){
+    var timeCount = 30;
+    var elem = document.getElementById('timerQuestionsSecondes');
+    var timerId = setInterval(countdown, 1000);
+    
+    
+    function countdown() {
+        if (timeCount <= 5)
+        {
+            elem.style.background = "red" ;
+        }
+        
+        if (timeCount <= 0) {
+            allQuestions();
+            progressBar();
+            loadingQuestions();
+            countDownQuestions();
+            elem.style.background = "#555" ;
+        }
+
+        else
+        {
+            elem.innerHTML = timeLeft;
+            timeLeft--;
+        }
+        
+    }
+    
+}
+
 
 function loadingQuestions(){
-    document.getElementById('questions').style.display = "none" ;
+    document.getElementById('questionsAnswers').style.display = "none" ;
     document.getElementById('loading_questions').style.display = "block" ;
     document.getElementById('loading').classList.add('loading') ;
     
     $('#loading').fadeIn('100');
     const timeOut = setTimeout(function() {
-        $('#questions').fadeIn('100');
+        $('#questionsAnswers').fadeIn('100');
     }, 1400);
 
     const timeOut2 = setTimeout(function() {
@@ -96,7 +195,7 @@ function progressBar(){
 
 function allQuestions(){
     currnetQuestion++ ;
-    
+
     document.getElementById('question').innerText = newQuestion[currnetQuestion]['question'];
     document.getElementById('a').innerText        = newQuestion[currnetQuestion]['a'] ;
     document.getElementById('b').innerText        = newQuestion[currnetQuestion]['b'] ;
@@ -108,6 +207,7 @@ function allQuestions(){
     
     if (currnetQuestion == quizzQuestions.length - 1){
         document.getElementById('nextQuestion').style.display = "none" ;
+        document.getElementById('submit').style.display = "block" ;
     }
 
         deselectChosenQuestions() ;
@@ -138,14 +238,7 @@ function determineTheCorrectanswer(){
     }) ;
 
     if(answer == 0){
-        let text = "Are you sure, every question not chosen is wrong!"
-        if (confirm(text) == false){
-            console.log('You cancelled');
-            // return again ;
-        }
-        
-        else console.log('score', score);
-        
+        alert("You can't pass to the next question until you answer it") ;
     }
 
 
@@ -159,18 +252,23 @@ function determineTheCorrectanswer(){
         }
 
         finalScore(score, quizzQuestions.length) ;
+        var user = document.getElementById('username').value ;
         document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
         document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
         document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
+        document.getElementById('congratulations').innerText = 'Congratulations' + " " + user + "! " + 'You have passed the quizz successfully' ;
  
     }
 }
 
-    if(score == 0){
+    if(score == 0 || score < (quizzQuestions.length/2)){
         finalScore(0, quizzQuestions.length) ;
+        var user = document.getElementById('username').value ;
         document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
-        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
-        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + quizzQuestions.length ; 
+        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ;
+        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
+        document.getElementById('congratulations').innerText = 'Unfortunately' + " " + user + "! " + "You didn't pass the quizz successfully" ;
+        console.log(user);
 
 
     }
@@ -178,6 +276,11 @@ function determineTheCorrectanswer(){
 
 
 
+function stepperCompenantStep1(){
+    document.getElementById('step1').classList.add('active') ;
+    document.getElementById('step1').innerHTML = `<i class="fa fa-check"></i>`;
+    
+}
 function stepperCompenantStep2(){
     document.getElementById('step2').classList.add('active') ;
     document.getElementById('step2').innerHTML = `<i class="fa fa-check"></i>`;
@@ -186,7 +289,7 @@ function stepperCompenantStep2(){
 
 function stepperCompenantStep3(){
     document.getElementById('step3').classList.add('active') ;
-    document.getElementById('step3').innerText = "" ;
+    // document.getElementById('step3').innerText = "" ;
     document.getElementById('step3').innerHTML = `<i class="fa fa-check"></i>`;
     
 }

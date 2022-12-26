@@ -11,7 +11,8 @@
 <body class="homepage" id="homepage">
     <div class="navbar">
         <div class="breadcrumbs" id="breadcrumbs">Home</div>
-        <div class="logo">Logo</div>
+        <div class="logo">LOGO
+        </div>
         <div class="lightmode" id="lightmode" onclick="lightmode()"><i class="fa fa-sun"></i></div>
         <div style="display: none;" class="darkmode" id="darkmode" onclick="darkmode()"><i class="fa fa-moon"></i></div>
     </div>
@@ -20,12 +21,15 @@
         <div style="margin-right: 20px;">
             <h1>Challenge Yourself in PHP QUIZZ</h1>
             <p>Once you stop learning, you start dying</p>
-            <div><a href="/starter/assets/quizz.html" id="getStarted">Get started</a></div>
+            <div><a id="getStarted" onclick="loadingQuizz()">Get started</a></div>
         </div>
         <div>
             <img src="/design/img/Q_and_A.svg" alt="Q&A" width="500">
         </div>
     </section>
-    <script src="/starter/assets/script/app.js"></script>
+
+    
+    <script src="/starter/assets/script/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>

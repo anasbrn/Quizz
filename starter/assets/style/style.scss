@@ -46,6 +46,7 @@
                 border-radius: 10px;
                 padding: 15px;
                 color: $text;
+                cursor: pointer;
             }
 
             a:hover{
@@ -55,6 +56,7 @@
         }
 
     }
+
 }
 
 .quizz{
@@ -70,6 +72,16 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
+
+    .userName{
+        // display: none;
+        input{
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+        }
+    }
+    
 }
 
 //stepper component
@@ -116,9 +128,9 @@
             }
         }
 
-        span{
-            background-color: $dark;
-        }
+        // span{
+        //     // background-color: $dark;
+        // }
         
         i{
             background-color: $buttons;
@@ -141,7 +153,7 @@
 //rules
 .quizzContainer{
     .rules{
-        display: block;
+        display: none;
         color: $text;
         border: 2px solid $content;
         background-color: $content;
@@ -229,7 +241,24 @@
         @extend .rules ;
         display: none;
         margin-top: 20px;
-     
+        
+        .timerQuestions{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 10px;
+            background-color: $dark;
+            width: 10%;
+            border-radius: 10px;
+        }
+
+        .timerQuestionsSecondes{
+            background-color: $content;
+            padding: 5px;
+            margin-left: 5px;
+            border-radius: 10px;
+        }
 
         .answers{
             background-color: $content;
@@ -289,7 +318,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 10px;
     // margin-left: 25px;
     background-color: $buttons;
     transition: 1s ease 0.3s;
@@ -305,17 +334,12 @@
     justify-content: center;
     align-items: center;
     color: $text;
-    border: 2px solid $content;
-    background-color: $content;
+    height: 210px;
     padding: 5px 10px;
-    border-radius: 10px; 
-    margin-top: 3rem !important;
-    width: 60%;
-    height: 50%;
-    box-shadow: 2px 3px 15px #0003;
 }
 
 .loading_questions {
+    display: none ;
     display: inline-block;
     width: 80px;
     height: 80px;
@@ -324,7 +348,7 @@
   .loading_questions:after {
     content: " ";
     display: block;
-    // background-color: $content;
+    background-color: $content;
     width: 50px;
     height: 50px;
     margin: 8px;
@@ -342,6 +366,44 @@
     }
   }
 
+
+//loading quizz
+.loadingQuizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text;
+    height: 160px;
+    padding: 5px 10px;
+}
+
+.loadingQ {
+    display: none ;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .loadingQ:after {
+    content: " ";
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid $buttons;
+    border-color: $buttons transparent $buttons transparent;
+    animation: loadingQ 1.2s linear infinite;
+  }
+  @keyframes loadingQ {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
 //result
 .quizzContainer{
     .result{
@@ -356,7 +418,8 @@
         }
 
         .answersFinal{
-            margin: 1rem 0;
+            width: 50%;
+            margin: 1rem auto;
             background-color: $content;
             display: flex;
             justify-content: space-between;
@@ -374,7 +437,7 @@
 
         a{
             text-decoration: none;
-            background-color: $buttons;
+            background-color: $dark;
             padding: 10px 20px;
             margin: 20px 0;
             border: none;
@@ -384,12 +447,13 @@
         }
 
         a:hover{
-            background-color: $buttonsFocus;
+            background-color: #222;
         }
 
         //bar result
         .barResult{
-            width: 100%;
+            margin: auto;
+            width: 50%;
             height: 16px;
             background-color: $dark;
             border-radius: 10px;
@@ -400,7 +464,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 1rem;
+                font-size: 10px;
                 background-color: $buttons;
                 transition: 1s ease 0.3s;
                 height: 100%;

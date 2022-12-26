@@ -9,15 +9,11 @@
     <title>QuizzYD</title>
 </head>
 <body class="quizz">
-    <!-- <div class="navbar">
-        <div>Home</div>
-        <div>Logo</div>
-        <div class="lightmode" id="lightmode"><i class="fa fa-sun"></i></div>
-    </div> -->
+   
 
     <div class="quizzContainer">
         <div class="stepperComponent">
-            <div class="step1 active"><i class="fa fa-check"></i></div>
+            <div id="step1" class="step1">1</div>
             <div id="step2" class="step2">2</div>
             <div id="step3" class="step3">3</div>
         </div>
@@ -28,6 +24,19 @@
         </div>
 
 
+        <section class="userName" id="userName">
+            <div>
+                <form action="">
+                    <input type="text" name="username" id="username" placeholder="Enter your name" required>
+                    <button type="button" onclick="stepperCompenantStep1(); getStarted()">Start</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="loadingQuizz" id="loadingQuizz" style="display: none;">
+            <div class="loadingQ" id="loadingQ"></div>
+        </div>
+
       
         
         <div id="rules" class="rules">
@@ -37,7 +46,7 @@
             <p>3. You can't see your score until the end of the quizz.</p>
             <p>4. You have 1 point for every correct question.</p>
             <div  class="next_button">
-                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2()">Start Quizz</button>
+                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2(); countDownQuestions()">Start Quizz</button>
             </div>
         </div>
 
@@ -49,27 +58,36 @@
 
         <div id="questions" class="questions">
             <div class="titles">Choose the correct answer</div>
+            <div id="questionsAnswers">
+                <div class="timerQuestions" id="timerQuestions">Timer:
+                    <div class="timerQuestionsSecondes" id="timerQuestionsSecondes">30</div>
+                </div>
 
-            <div id="question" class="question">What is php?</div>
+                <div id="question" class="question">What is php?</div>
 
-            <div class="answers">
-                <input type="radio" name="answer" id="1" class="radio">
-                <label for="1" id="a" class="answers">What is PHP</label>
+                <div class="answers">
+                    <input type="radio" name="answer" id="1" class="radio">
+                    <label for="1" id="a" class="answers">What is PHP</label>
+                </div>
+
+                <div class="answers">
+                    <input type="radio" name="answer" id="2" class="radio">
+                    <label for="2" id="b" class="answers">What is PHP</label>
+                </div>
+
+                <div class="answers">
+                    <input type="radio" name="answer" id="3" class="radio">
+                    <label for="3" id="c" class="answers">What is PHP</label>
+                </div>
+
+                <div class="answers">
+                    <input type="radio" name="answer" id="4" class="radio">
+                    <label for="4" id="d" class="answers">What is PHP</label>
+                </div>
             </div>
 
-            <div class="answers">
-                <input type="radio" name="answer" id="2" class="radio">
-                <label for="2" id="b" class="answers">What is PHP</label>
-            </div>
-
-            <div class="answers">
-                <input type="radio" name="answer" id="3" class="radio">
-                <label for="3" id="c" class="answers">What is PHP</label>
-            </div>
-
-            <div class="answers">
-                <input type="radio" name="answer" id="4" class="radio">
-                <label for="4" id="d" class="answers">What is PHP</label>
+            <div id="loading" class="">
+                <div id="loading_questions" class="loading_questions" style="display: none;"></div>
             </div>
 
             <div class="questionsAnswers">
@@ -81,18 +99,16 @@
                     <div class="barLevel"></div>
                 </div>
                 <div>
-                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
-                    <button onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
+                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions(); countDownQuestions()">Next question</button>
+                    <button id="submit" style="display: none;" onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
                 </div>
             </div>
         </div>
 
-        <div id="loading" class="">
-            <div id="loading_questions" class="loading_questions" style="display: none;"></div>
-        </div>
+        
 
         <div id="result" class="result">
-            <div class="titles">Completed! You have passed the quizz</div>
+            <div class="titles" id="congratulations">Completed! You have passed the quizz</div>
             <div class="score">Your score is</div>
             <div class="barResult" id="barResult">
                 <div class="barResultLevel" id="barResultLevel"></div>
