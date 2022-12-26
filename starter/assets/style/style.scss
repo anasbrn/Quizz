@@ -5,11 +5,66 @@
 
 
 *{
-    background-color: $background;
+    // background-color: $background;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.homepage{
+    background-image: linear-gradient(to right, $dark , $buttons);
+    color: $text;
+    // background-image: url(/design/img/navbar.svg);
+    
+    background-size: 100%;
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 20px;
+
+         i{
+            background-color: $content;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+    }
+
+    .homeContent{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        div{
+            margin-top: 3rem;
+            
+            a{
+                text-decoration: none;
+                background-image: linear-gradient(to right, $buttons , $buttonsFocus);
+                border: none;
+                border-radius: 10px;
+                padding: 15px;
+                color: $text;
+            }
+
+            a:hover{
+                background-image: linear-gradient(to left, $buttons , $buttonsFocus);
+
+            }
+        }
+
+    }
+}
+
+.quizz{
+    background-image: url(/design/img/background.svg);
+    background-size: 80%;
+}
+
 .quizzContainer{
+    margin: 0%;
+    padding: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,7 +147,7 @@
         background-color: $content;
         padding: 5px 10px;
         border-radius: 10px; 
-        width: 40%;
+        width: 60%;
         margin-top: 3rem !important;
         box-shadow: 2px 3px 15px #0003;
         animation-name: display;
@@ -136,7 +191,7 @@
     .next_button{
         background-color: $content;
         display: flex;
-        justify-content: end;
+        justify-content: space-between;
     }
 
     p{
@@ -151,7 +206,7 @@
     background-color: $content;
     padding: 5px 10px;
     border-radius: 10px; 
-    width: 40%;
+    width: 60%;
     box-shadow: 2px 3px 15px #0003;
     
 
@@ -209,6 +264,10 @@
             margin-right: 5px
         }
 
+        .next_button_question:hover{
+            background-color: #222 !important;
+        }
+
     }
 
     
@@ -217,14 +276,12 @@
 //progress bar
 .bar {
     display: none;
-    width: 40%;
+    width: 60%;
     margin-top: 2rem;
     height: 1rem;
     background-color: $dark;
     border-radius: 10px;
     color: $text;
-    position: fixed;
-    bottom: 78%;
   }
   
   .barLevel {
@@ -253,7 +310,7 @@
     padding: 5px 10px;
     border-radius: 10px; 
     margin-top: 3rem !important;
-    width: 40%;
+    width: 60%;
     height: 50%;
     box-shadow: 2px 3px 15px #0003;
 }
@@ -304,6 +361,7 @@
             display: flex;
             justify-content: space-between;
 
+
             .correctAnswers{
                 margin-bottom: 1rem;
                 background-color: $content;
@@ -312,6 +370,21 @@
             .wrongAnswers{
                 background-color: $content;
             }
+        }
+
+        a{
+            text-decoration: none;
+            background-color: $buttons;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: none;
+            color: $text;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a:hover{
+            background-color: $buttonsFocus;
         }
 
         //bar result

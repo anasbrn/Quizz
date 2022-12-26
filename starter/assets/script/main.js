@@ -2,6 +2,10 @@ const newQuestion = quizzQuestions.sort((a, b) => 0.5 - Math.random());
 
 let currnetQuestion = -1;
 
+
+
+
+
 function switchFromRulesToCounter(){
     document.getElementById('rules').style.display = "none" ;
     document.getElementById('counter').style.display = "block" ;
@@ -67,7 +71,7 @@ function changeProgress(maxValue,finalValue){
     const barLevel = document.querySelector('.barLevel');
     
     barLevel.style.width =`${(maxValue * 100) / finalValue}%`;
-    barLevel.innerHTML   =`${Number((maxValue * 100) / finalValue).toFixed(2)}%`;
+    barLevel.innerHTML   =`${Number((maxValue * 100) / finalValue)}%`;
     
 }
 
@@ -75,7 +79,7 @@ function finalScore(maxScore, length) {
     const barResultLevel = document.querySelector('.barResultLevel');
     
     barResultLevel.style.width =`${(maxScore * 100) / length}%`;
-    barResultLevel.innerHTML   =`${Number((maxScore * 100) / length).toFixed(2)}%`;
+    barResultLevel.innerHTML   =`${Number((maxScore * 100) / length)}%`;
     
 }
 
@@ -134,9 +138,16 @@ function determineTheCorrectanswer(){
     }) ;
 
     if(answer == 0){
-        alert('Please choose an answer') ;
+        let text = "Are you sure, every question not chosen is wrong!"
+        if (confirm(text) == false){
+            console.log('You cancelled');
+            // return again ;
+        }
+        
+        else console.log('score', score);
         
     }
+
 
     else if(answer){
         if(answer == newQuestion[currnetQ]['answer']){
@@ -148,18 +159,23 @@ function determineTheCorrectanswer(){
         }
 
         finalScore(score, quizzQuestions.length) ;
+        document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
         document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
         document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
  
     }
+}
 
     if(score == 0){
         finalScore(0, quizzQuestions.length) ;
-        document.getElementById('wrongAnswers').innerText = quizzQuestions.length ; 
+        document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
+        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
+        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + quizzQuestions.length ; 
+
 
     }
 
-}
+
 
 
 function stepperCompenantStep2(){
@@ -174,6 +190,18 @@ function stepperCompenantStep3(){
     document.getElementById('step3').innerHTML = `<i class="fa fa-check"></i>`;
     
 }
+
+
+function replayQuizz(){
+    // document.getElementById('rules').style.display = "block" ;
+    // document.getElementById('result').style.display = "none" ;
+    window.location.reload() ;
+}
+
+
+  
+
+
 
 
 

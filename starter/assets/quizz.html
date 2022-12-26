@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>QuizzYD</title>
 </head>
-<body class="">
-    
+<body class="quizz">
+    <!-- <div class="navbar">
+        <div>Home</div>
+        <div>Logo</div>
+        <div class="lightmode" id="lightmode"><i class="fa fa-sun"></i></div>
+    </div> -->
 
     <div class="quizzContainer">
-
         <div class="stepperComponent">
             <div class="step1 active"><i class="fa fa-check"></i></div>
             <div id="step2" class="step2">2</div>
@@ -24,21 +27,15 @@
             <div class="">Result</div>
         </div>
 
-        <div class="bar" id="bar">
-            <div class="barLevel"></div>
-        </div>
-        
-        <!-- <div class="progressBar" id="progressBar">
-            <div class="progressBarLevel"></div>
-        </div> -->
-        
 
+      
+        
         <div id="rules" class="rules">
             <div class="titles">QuizzYD Rules</div>
-            <p>1. You have 30 secondes in every question</p>
-            <p>2. You can't back into the previous question if you click "Next"</p>
-            <p>3. You can't see your score until the end of the quizz</p>
-            <p>4. You have 20 points for every correct question</p>
+            <p>1. You have 30 secondes in every question.</p>
+            <p>2. You can't back into the previous question if you click "Next".</p>
+            <p>3. You can't see your score until the end of the quizz.</p>
+            <p>4. You have 1 point for every correct question.</p>
             <div  class="next_button">
                 <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2()">Start Quizz</button>
             </div>
@@ -80,8 +77,13 @@
             </div>
 
             <div class="next_button">
-                <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
-                <button onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
+                <div class="bar" id="bar">
+                    <div class="barLevel"></div>
+                </div>
+                <div>
+                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
+                    <button onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
+                </div>
             </div>
         </div>
 
@@ -92,12 +94,16 @@
         <div id="result" class="result">
             <div class="titles">Completed! You have passed the quizz</div>
             <div class="score">Your score is</div>
-            <div class="barResult">
+            <div class="barResult" id="barResult">
                 <div class="barResultLevel" id="barResultLevel"></div>
             </div>
             <div class="answersFinal">
                 <div class="correctAnswers" id="correctAnswers">Correct answers: </div>
                 <div class="wrongAnswers" id="wrongAnswers">Wrong answers: </div>
+            </div>
+                <div style="display: flex; justify-content: center;">
+                <a style="margin-right: 10px;" onclick="replayQuizz()">Replay quizz</a>
+                <a href="../../index.html">Home page</a>
             </div>
         </div>
     </div>
