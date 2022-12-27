@@ -46,7 +46,7 @@
             <p>3. You can't see your score until the end of the quizz.</p>
             <p>4. You have 1 point for every correct question.</p>
             <div  class="next_button">
-                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2(); countDownQuestions()">Start Quizz</button>
+                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2()">Start Quizz</button>
             </div>
         </div>
 
@@ -66,22 +66,22 @@
                 <div id="question" class="question">What is php?</div>
 
                 <div class="answers">
-                    <input type="radio" name="answer" id="1" class="radio">
+                    <input type="radio" name="answer1" id="1" class="radio">
                     <label for="1" id="a" class="answers">What is PHP</label>
                 </div>
 
                 <div class="answers">
-                    <input type="radio" name="answer" id="2" class="radio">
+                    <input type="radio" name="answer2" id="2" class="radio">
                     <label for="2" id="b" class="answers">What is PHP</label>
                 </div>
 
                 <div class="answers">
-                    <input type="radio" name="answer" id="3" class="radio">
+                    <input type="radio" name="answer3" id="3" class="radio">
                     <label for="3" id="c" class="answers">What is PHP</label>
                 </div>
 
                 <div class="answers">
-                    <input type="radio" name="answer" id="4" class="radio">
+                    <input type="radio" name="answer4" id="4" class="radio">
                     <label for="4" id="d" class="answers">What is PHP</label>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="barLevel"></div>
                 </div>
                 <div>
-                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions(); countDownQuestions()">Next question</button>
+                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
                     <button id="submit" style="display: none;" onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
                 </div>
             </div>

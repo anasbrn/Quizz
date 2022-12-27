@@ -2,10 +2,10 @@ let quizzQuestions = [
     {
         question: "What does php means ?",
         a: "HyperText PreProcessor",
-        b: "Processor High Performance",
+        b: "Personal HomePage",
         c: "Private Hypertext Processor",
         d: "All the above are incorrect",
-        answer: 1,
+        answer: ['1', '2'],
     },
 
     {
@@ -14,7 +14,7 @@ let quizzQuestions = [
         b: "$this->",
         c: "classe()",
         d: "return()",
-        answer: 2, 
+        answer: ['2'], 
     },
 
     {
@@ -23,7 +23,7 @@ let quizzQuestions = [
         b: "desc()",
         c: "reverse()",
         d: "rsort()",
-        answer: 4, 
+        answer: ['4'], 
     },
 
     {
@@ -32,7 +32,7 @@ let quizzQuestions = [
         b: "stop the script",
         c: "come out of a loop",
         d: "bypass an error",
-        answer: 2, 
+        answer: ['2'], 
     },
 
     {
@@ -41,7 +41,7 @@ let quizzQuestions = [
         b: "session_id()",
         c: "get_session()",
         d: "$_SESSION['ID']",
-        answer: 2, 
+        answer: ['2'], 
     },
 ]
 

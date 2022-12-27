@@ -118,37 +118,37 @@ function countdown() {
 
 };
 
-// timeCount = 30 ;
+// var timerId ;
 
-function countDownQuestions(){
-    var timeCount = 30;
-    var elem = document.getElementById('timerQuestionsSecondes');
-    var timerId = setInterval(countdown, 1000);
+// function countDownQuestions(){
+//     clearInterval(timerId) ;
+//     timerId = setInterval(countDownQ, 1000);
     
-    
-    function countdown() {
-        if (timeCount <= 5)
-        {
-            elem.style.background = "red" ;
-        }
-        
-        if (timeCount <= 0) {
-            allQuestions();
-            progressBar();
-            loadingQuestions();
-            countDownQuestions();
-            elem.style.background = "#555" ;
-        }
+// }  
+// function countDownQ() {
+//         var elem = document.getElementById('timerQuestionsSecondes');
 
-        else
-        {
-            elem.innerHTML = timeLeft;
-            timeLeft--;
-        }
+//         if (elem.innerText <= 5)
+//         {
+//             elem.style.background = "red" ;
+//         }
         
-    }
+//         if (elem.innerText <= 0) {
+//             allQuestions();
+//             progressBar();
+//             loadingQuestions();
+//             countDownQuestions();
+//             elem.style.background = "#555" ;
+//         }
+
+//         else
+//         {
+//             elem.innerText--;
+//         }
+        
+//     }
     
-}
+
 
 
 function loadingQuestions(){
@@ -228,22 +228,25 @@ let currnetQ = -1 ;
 
 function determineTheCorrectanswer(){
     currnetQ++ ;
-    let answer = 0 ;
+    let answer = [] ;
     let answersSelected = document.querySelectorAll('.radio') ;
 
     answersSelected.forEach(answerSelected => {
         if(answerSelected.checked ){
-            answer = answerSelected.id ;
+            answer.push(answerSelected.id) ;
         }
+
     }) ;
+    console.log("userAnswer",answer);
+    console.log("correct answer",newQuestion[currnetQ]['answer'])
+    
+    // if(answer == 0){
+    //     alert("You can't pass to the next question until you answer it") ;
+    // }
 
-    if(answer == 0){
-        alert("You can't pass to the next question until you answer it") ;
-    }
 
-
-    else if(answer){
-        if(answer == newQuestion[currnetQ]['answer']){
+    if(answer) {
+        if(answer.toString() == newQuestion[currnetQ]['answer'].toString()){
             score++ ;
         }
 
@@ -268,7 +271,7 @@ function determineTheCorrectanswer(){
         document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ;
         document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
         document.getElementById('congratulations').innerText = 'Unfortunately' + " " + user + "! " + "You didn't pass the quizz successfully" ;
-        console.log(user);
+        // console.log(user);
 
 
     }
