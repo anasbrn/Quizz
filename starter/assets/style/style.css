@@ -239,6 +239,12 @@
 .quizzContainer .questions .next_button_question:hover {
   background-color: #222 !important;
 }
+.quizzContainer .questions .QuestionsButtons {
+  display: flex;
+}
+.quizzContainer .questions .QuestionsButtons button {
+  margin-left: 5px;
+}
 
 .bar {
   display: none;

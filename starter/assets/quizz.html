@@ -46,7 +46,7 @@
             <p>3. You can't see your score until the end of the quizz.</p>
             <p>4. You have 1 point for every correct question.</p>
             <div  class="next_button">
-                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2()">Start Quizz</button>
+                <button type="button" onclick="switchFromRulesToCounter(); setTimeout(countdown, 1000); allQuestions(); stepperCompenantStep2(); countDownQuestions()">Start Quizz</button>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <div class="titles">Choose the correct answer</div>
             <div id="questionsAnswers">
                 <div class="timerQuestions" id="timerQuestions">Timer:
-                    <div class="timerQuestionsSecondes" id="timerQuestionsSecondes">30</div>
+                    <div class="timerQuestionsSecondes" id="timerQuestionsSecondes">10</div>
                 </div>
 
                 <div id="question" class="question">What is php?</div>
@@ -98,9 +98,10 @@
                 <div class="bar" id="bar">
                     <div class="barLevel"></div>
                 </div>
-                <div>
-                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions()">Next question</button>
+                <div class="QuestionsButtons">
+                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions(); countDownQuestions()">Next question</button>
                     <button id="submit" style="display: none;" onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
+                    <button id="reset" class="reset" onclick="deselectChosenQuestions()">Reset</button>
                 </div>
             </div>
         </div>

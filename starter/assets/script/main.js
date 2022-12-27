@@ -118,36 +118,51 @@ function countdown() {
 
 };
 
-// var timerId ;
+var timerId ;
 
-// function countDownQuestions(){
-//     clearInterval(timerId) ;
-//     timerId = setInterval(countDownQ, 1000);
+function countDownQuestions(){
+    clearInterval(timerId);
+    timerId = setInterval(countDownQ, 1000);
+    var elem = document.getElementById('timerQuestionsSecondes');
+    elem.innerText = 10;
+    elem.style.background = "#555" ;
     
-// }  
-// function countDownQ() {
-//         var elem = document.getElementById('timerQuestionsSecondes');
-
-//         if (elem.innerText <= 5)
-//         {
-//             elem.style.background = "red" ;
-//         }
+    function countDownQ() {
+        let currentQ = document.getElementById('currentQuestion') ;
         
-//         if (elem.innerText <= 0) {
-//             allQuestions();
-//             progressBar();
-//             loadingQuestions();
-//             countDownQuestions();
-//             elem.style.background = "#555" ;
-//         }
-
-//         else
-//         {
-//             elem.innerText--;
-//         }
+        if (elem.innerText <= 5)
+        {
+            elem.style.background = "red" ;
+        }
         
-//     }
+        if (elem.innerText <= 0 && currentQ.innerText < quizzQuestions.length) {
+            determineTheCorrectanswer()
+            loadingQuestions();
+            progressBar();
+            allQuestions();
+            elem.innerText = 10;
+            elem.style.background = "#555" ;
+        }
+
+        else if(elem.innerText <= 0 && currentQ.innerText == quizzQuestions.length) {
+            determineTheCorrectanswer();
+            progressBar();
+            switchFromQuestionsToResult();
+            elem.innerText = 10;
+            elem.style.background = "#555" ;
+        }
+        
+        else
+        {
+            elem.innerText--;
+        }
+        
+    } 
     
+}
+
+
+
 
 
 
@@ -237,8 +252,6 @@ function determineTheCorrectanswer(){
         }
 
     }) ;
-    console.log("userAnswer",answer);
-    console.log("correct answer",newQuestion[currnetQ]['answer'])
     
     // if(answer == 0){
     //     alert("You can't pass to the next question until you answer it") ;
@@ -254,27 +267,29 @@ function determineTheCorrectanswer(){
             wrong++ ;
         }
 
-        finalScore(score, quizzQuestions.length) ;
-        var user = document.getElementById('username').value ;
-        document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
-        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
-        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
-        document.getElementById('congratulations').innerText = 'Congratulations' + " " + user + "! " + 'You have passed the quizz successfully' ;
+        if(score >= (quizzQuestions.length / 2)){
+            finalScore(score, quizzQuestions.length) ;
+            var user = document.getElementById('username').value ;
+            document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
+            document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ; 
+            document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
+            document.getElementById('congratulations').innerText = 'Congratulations' + " " + user + "! " + 'You have passed the quizz successfully' ;
+        }
  
+        else{
+            finalScore(score, quizzQuestions.length) ;
+            var user = document.getElementById('username').value ;
+            document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
+            document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ;
+            document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
+            document.getElementById('congratulations').innerText = 'Unfortunately' + " " + user + "! " + "You didn't pass the quizz successfully" ;
+            // console.log(user);
+        
+        
+        }
     }
 }
 
-    if(score == 0 || score < (quizzQuestions.length/2)){
-        finalScore(0, quizzQuestions.length) ;
-        var user = document.getElementById('username').value ;
-        document.getElementById('barResult').style.backgroundColor = '#ff0000' ;
-        document.getElementById('correctAnswers').innerText = 'Correct answers:' + " " + score ;
-        document.getElementById('wrongAnswers').innerText   = 'Wrong answers:' + " " + wrong ; 
-        document.getElementById('congratulations').innerText = 'Unfortunately' + " " + user + "! " + "You didn't pass the quizz successfully" ;
-        // console.log(user);
-
-
-    }
 
 
 
