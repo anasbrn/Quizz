@@ -10,8 +10,14 @@
 </head>
 <body class="homepage" id="homepage">
     <div class="navbar">
-        <div class="breadcrumbs" id="breadcrumbs">Home</div>
-        <div class="logo">LOGO
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul style="list-style: none; display: flex; ">
+                <li style="margin-right: 5px; color: gray;">Home</li>
+                <li style="margin-right: 5px;">/</li>
+                <li><a href="/starter/assets/quizz.html" style="text-decoration: none; color: white;" id="quizzBreadCrumbs">Quizz</a></li>
+            </ul>
+        </div>
+        <div class="logo"><img src="/design/img/logo.svg" alt="" width="400">
         </div>
         <div class="lightmode" id="lightmode" onclick="lightmode()"><i class="fa fa-sun"></i></div>
         <div style="display: none;" class="darkmode" id="darkmode" onclick="darkmode()"><i class="fa fa-moon"></i></div>

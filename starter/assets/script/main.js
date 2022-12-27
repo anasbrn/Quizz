@@ -11,13 +11,79 @@ function lightmode(){
     let texts       = document.getElementById('homeContent') ;
     let breadcrumbs = document.getElementById('breadcrumbs') ;
     let getStarted = document.getElementById('getStarted') ;
+    let quizzBreadCrumbs = document.getElementById('quizzBreadCrumbs') ;
 
+    
     background.style.backgroundImage = "linear-gradient(to left, #4ade80 , #fff)" ;
     getStarted.style.backgroundImage = "linear-gradient(to left, #09834a , #4ade80)" ;
     texts.style.color = "#333" ;
     breadcrumbs.style.color = "#333" ;
     lightmode.style.display = "none" ;
     darkmode.style.display = "block" ;
+    quizzBreadCrumbs.style.color = "black"
+
+}
+
+
+function lightmodeQuizz(){
+    let lightmode = document.getElementById('lightmode') ;
+    let darkmode  = document.getElementById('darkmode') ;
+    let background  = document.getElementById('quizz') ;
+    let breadcrumbs  = document.getElementById('breadcrumbs') ;
+    let rules  = document.getElementById('rules') ;
+    let questions = document.getElementById('questions') ;
+    let counter = document.getElementById('counter') ;
+    let result = document.getElementById('result') ;
+    let timerQuestions = document.getElementById('timerQuestions') ;
+    let homeBreadcrumbs = document.getElementById('homeBreadcrumbs') ;
+
+    
+    background.style.backgroundImage = "url(/design/img/backgroundLightMode.svg)" ; 
+    breadcrumbs.style.color = "black" ;
+    titlesStepper.style.color = "black" ;
+    rules.style.background = "#CBD5E1" ;
+    questions.style.background = "#CBD5E1" ;
+    counter.style.background = "#CBD5E1" ;
+    result.style.background = "#CBD5E1" ;
+    rules.style.color = "black" ;
+    questions.style.color = "black" ;
+    counter.style.color = "black" ;
+    result.style.color = "black" ;
+    timerQuestions.style.color = "white" ;
+    lightmode.style.display = "none" ;
+    darkmode.style.display = "block" ;
+    homeBreadcrumbs.style.color = "black"
+
+}
+
+function darkmodeQuizz(){
+    let lightmode = document.getElementById('lightmode') ;
+    let darkmode  = document.getElementById('darkmode') ;
+    let background  = document.getElementById('quizz') ;
+    let breadcrumbs  = document.getElementById('breadcrumbs') ;
+    let rules  = document.getElementById('rules') ;
+    let questions = document.getElementById('questions') ;
+    let counter = document.getElementById('counter') ;
+    let result = document.getElementById('result') ;
+    let timerQuestions = document.getElementById('timerQuestions') ;
+    let homeBreadcrumbs = document.getElementById('homeBreadcrumbs') ;
+    
+    background.style.backgroundImage = "url(/design/img/backgroundDarkMode.svg)" ; 
+    breadcrumbs.style.color = "white" ;
+    titlesStepper.style.color = "white" ;
+    rules.style.background = "#555555" ;
+    questions.style.background = "#555555" ;
+    counter.style.background = "#555555" ;
+    result.style.background = "#555555" ;
+    rules.style.color = "white" ;
+    questions.style.color = "white" ;
+    counter.style.color = "white" ;
+    result.style.color = "white" ;
+    timerQuestions.style.color = "white" ;
+    lightmode.style.display = "block" ;
+    darkmode.style.display = "none" ;
+    homeBreadcrumbs.style.color = "white"
+
 }
 
 
@@ -29,6 +95,7 @@ function darkmode(){
     let background = document.getElementById('homepage') ;
     let breadcrumbs = document.getElementById('breadcrumbs') ;
     let getStarted = document.getElementById('getStarted') ;
+    let quizzBreadCrumbs = document.getElementById('quizzBreadCrumbs') ;
 
 
 
@@ -38,6 +105,8 @@ function darkmode(){
         breadcrumbs.style.color = "white" ;
         lightmode.style.display = "block" ;
         darkmode.style.display = "none" ;
+        quizzBreadCrumbs.style.color = "white"
+
 }
 
 
@@ -124,7 +193,7 @@ function countDownQuestions(){
     clearInterval(timerId);
     timerId = setInterval(countDownQ, 1000);
     var elem = document.getElementById('timerQuestionsSecondes');
-    elem.innerText = 10;
+    elem.innerText = 30;
     elem.style.background = "#555" ;
     
     function countDownQ() {
@@ -140,7 +209,7 @@ function countDownQuestions(){
             loadingQuestions();
             progressBar();
             allQuestions();
-            elem.innerText = 10;
+            elem.innerText = 30;
             elem.style.background = "#555" ;
         }
 
@@ -148,7 +217,7 @@ function countDownQuestions(){
             determineTheCorrectanswer();
             progressBar();
             switchFromQuestionsToResult();
-            elem.innerText = 10;
+            elem.innerText = 30;
             elem.style.background = "#555" ;
         }
         
@@ -208,24 +277,66 @@ function progressBar(){
 }
 
 
-function allQuestions(){
-    currnetQuestion++ ;
+function emptyAnswer(){
+    let answer1 = document.getElementById('1') ;
+    let answer2 = document.getElementById('2') ;
+    let answer3 = document.getElementById('3') ;
+    let answer4 = document.getElementById('4') ;
 
-    document.getElementById('question').innerText = newQuestion[currnetQuestion]['question'];
-    document.getElementById('a').innerText        = newQuestion[currnetQuestion]['a'] ;
-    document.getElementById('b').innerText        = newQuestion[currnetQuestion]['b'] ;
-    document.getElementById('c').innerText        = newQuestion[currnetQuestion]['c'] ;
-    document.getElementById('d').innerText        = newQuestion[currnetQuestion]['d'] ;
-
-    document.getElementById('currentQuestion').innerText = currnetQuestion + 1 ;
-
-    
-    if (currnetQuestion == quizzQuestions.length - 1){
-        document.getElementById('nextQuestion').style.display = "none" ;
-        document.getElementById('submit').style.display = "block" ;
+    if (answer1.checked == false && answer2.checked == false && answer3.checked == false && answer4.checked == false){
+        alert('Please choose an answer') ;
     }
 
-        deselectChosenQuestions() ;
+    else{
+        determineTheCorrectanswer();
+        loadingQuestions();
+        progressBar();
+        countDownQuestions()
+        allQuestions() ;
+    }
+}
+
+function emptyLastAnswer(){
+    let answer1 = document.getElementById('1') ;
+    let answer2 = document.getElementById('2') ;
+    let answer3 = document.getElementById('3') ;
+    let answer4 = document.getElementById('4') ;
+
+    if (answer1.checked == false && answer2.checked == false && answer3.checked == false && answer4.checked == false){
+        alert('Please choose an answer') ;
+    }
+
+    else{
+        stepperCompenantStep3();
+        determineTheCorrectanswer();
+        progressBar();
+        switchFromQuestionsToResult()
+    }
+
+}
+
+
+function allQuestions(){
+    currnetQuestion++ ;
+    
+
+        document.getElementById('question').innerText = newQuestion[currnetQuestion]['question'];
+        document.getElementById('a').innerText        = newQuestion[currnetQuestion]['a'] ;
+        document.getElementById('b').innerText        = newQuestion[currnetQuestion]['b'] ;
+        document.getElementById('c').innerText        = newQuestion[currnetQuestion]['c'] ;
+        document.getElementById('d').innerText        = newQuestion[currnetQuestion]['d'] ;
+    
+        document.getElementById('currentQuestion').innerText = currnetQuestion + 1 ;
+    
+        
+        if (currnetQuestion == quizzQuestions.length - 1){
+            document.getElementById('nextQuestion').style.display = "none" ;
+            document.getElementById('submit').style.display = "block" ;
+        }
+    
+            deselectChosenQuestions() ;
+    
+
         
 }
 

@@ -16,20 +16,6 @@
     
     background-size: 100%;
 
-    .navbar{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 30px 20px;
-
-         i{
-            background-color: $content;
-            padding: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-    }
 
     .homeContent{
         display: flex;
@@ -59,19 +45,38 @@
 
 }
 
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+    color: $text;
+
+     i{
+        background-color: $content;
+        text-align: center;
+        padding: 1rem;
+        margin-left: 3rem;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+}
+
 .quizz{
-    background-image: url(/design/img/background.svg);
+    background-image: url(/design/img/backgroundDarkMode.svg);
     background-size: 80%;
+    
 }
 
 .quizzContainer{
-    margin: 0%;
-    padding: 0%;
+    // margin: auto;
+    // padding: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: 60vh;
 
     .userName{
         input{
@@ -84,13 +89,17 @@
 }
 
 //stepper component
+.stepperComponentParent{
+    display: flex;
+    justify-content: center;
+}
 
 .stepperComponent{
     display: flex;
     justify-content: space-between;
     width: 40%;
-    position: fixed;
-    top: 5%;
+    // position: fixed;
+    // top: 5%;
     
     div{
         background-color: $dark;
@@ -139,14 +148,18 @@
 
 }
 
-
+.titlesStepperParent{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
 .titlesStepper{
     display: flex;
     justify-content: space-between;
     width: 40%;
     color: $text;
-    position: fixed;
-    top: 15%;
+    // position: fixed;
+    // top: 15%;
 }
 
 //rules
@@ -154,7 +167,6 @@
     .rules{
         display: none;
         color: $text;
-        border: 2px solid $content;
         background-color: $content;
         padding: 5px 10px;
         border-radius: 10px; 
@@ -177,7 +189,7 @@
     }
 
     .titles{
-        background-color: $content;
+        background-color: inherit;
         display: flex;
         justify-content: center;
         margin: 30px 0;
@@ -200,21 +212,20 @@
     }
 
     .next_button{
-        background-color: $content;
+        background-color: inherit;
         display: flex;
         justify-content: space-between;
     }
 
     p{
-        background-color: $content;
+        background-color: inherit;
     }
 }
 
 //counter start quizz
 #counter{
     display: none;
-    border: 2px solid $content;
-    background-color: $content;
+    background-color: inherit;
     padding: 5px 10px;
     border-radius: 10px; 
     width: 60%;
@@ -222,7 +233,7 @@
     
 
     span{
-        background-color: $content ;
+        background-color: inherit ;
         display: block;
         width: 100%;
         margin: auto;
@@ -253,37 +264,37 @@
         }
 
         .timerQuestionsSecondes{
-            background-color: $content;
+            background-color: inherit;
             padding: 5px;
             margin-left: 5px;
             border-radius: 10px;
         }
 
         .answers{
-            background-color: $content;
+            background-color: inherit;
             margin: 10px 10px;
         }
 
         label{
-            background-color: $content;
+            background-color: inherit;
         }
 
         .questionsAnswers{
-            background-color: $content;
+            background-color: inherit;
             display: flex;
             justify-content: center;
         }
 
         #currentQuestion{
-            background-color: $content;
+            background-color: inherit;
         }
 
         #maxQuestions{
-            background-color: $content;
+            background-color: inherit;
         }
 
         .question{
-            background-color: $content;
+            background-color: inherit;
             padding: 10px 20px;
         }
 
@@ -350,12 +361,12 @@
     display: inline-block;
     width: 80px;
     height: 80px;
-    background-color: $content;
+    background-color: inherit;
   }
   .loading_questions:after {
     content: " ";
     display: block;
-    background-color: $content;
+    background-color: inherit;
     width: 50px;
     height: 50px;
     margin: 8px;
@@ -418,7 +429,7 @@
         display: none;
 
         .score{
-            background-color: $content;
+            background-color: inherit;
             display: flex;
             justify-content: center;
             padding: 10px 20px
@@ -427,18 +438,18 @@
         .answersFinal{
             width: 50%;
             margin: 1rem auto;
-            background-color: $content;
+            background-color: inherit;
             display: flex;
             justify-content: space-between;
 
 
             .correctAnswers{
                 margin-bottom: 1rem;
-                background-color: $content;
+                background-color: inherit;
             }
 
             .wrongAnswers{
-                background-color: $content;
+                background-color: inherit;
             }
         }
 

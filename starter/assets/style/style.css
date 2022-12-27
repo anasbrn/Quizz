@@ -7,18 +7,6 @@
   color: white;
   background-size: 100%;
 }
-.homepage .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 30px 20px;
-}
-.homepage .navbar i {
-  background-color: #555555;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
 .homepage .homeContent {
   display: flex;
   justify-content: space-around;
@@ -40,19 +28,33 @@
   background-image: linear-gradient(to left, #23BE75, #09834a);
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px;
+  color: white;
+}
+.navbar i {
+  background-color: #555555;
+  text-align: center;
+  padding: 1rem;
+  margin-left: 3rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .quizz {
-  background-image: url(/design/img/background.svg);
+  background-image: url(/design/img/backgroundDarkMode.svg);
   background-size: 80%;
 }
 
 .quizzContainer {
-  margin: 0%;
-  padding: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 60vh;
 }
 .quizzContainer .userName input {
   padding: 10px;
@@ -60,12 +62,15 @@
   border-radius: 10px;
 }
 
+.stepperComponentParent {
+  display: flex;
+  justify-content: center;
+}
+
 .stepperComponent {
   display: flex;
   justify-content: space-between;
   width: 40%;
-  position: fixed;
-  top: 5%;
 }
 .stepperComponent div {
   background-color: black;
@@ -101,19 +106,22 @@
   background-color: #23BE75;
 }
 
+.titlesStepperParent {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 .titlesStepper {
   display: flex;
   justify-content: space-between;
   width: 40%;
   color: white;
-  position: fixed;
-  top: 15%;
 }
 
 .quizzContainer .rules, .quizzContainer .result, .quizzContainer .questions {
   display: none;
   color: white;
-  border: 2px solid #555555;
   background-color: #555555;
   padding: 5px 10px;
   border-radius: 10px;
@@ -142,7 +150,7 @@
   }
 }
 .quizzContainer .titles {
-  background-color: #555555;
+  background-color: inherit;
   display: flex;
   justify-content: center;
   margin: 30px 0;
@@ -161,25 +169,24 @@
   cursor: pointer;
 }
 .quizzContainer .next_button {
-  background-color: #555555;
+  background-color: inherit;
   display: flex;
   justify-content: space-between;
 }
 .quizzContainer p {
-  background-color: #555555;
+  background-color: inherit;
 }
 
 #counter {
   display: none;
-  border: 2px solid #555555;
-  background-color: #555555;
+  background-color: inherit;
   padding: 5px 10px;
   border-radius: 10px;
   width: 60%;
   box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.2);
 }
 #counter span {
-  background-color: #555555;
+  background-color: inherit;
   display: block;
   width: 100%;
   margin: auto;
@@ -205,31 +212,31 @@
   border-radius: 10px;
 }
 .quizzContainer .questions .timerQuestionsSecondes {
-  background-color: #555555;
+  background-color: inherit;
   padding: 5px;
   margin-left: 5px;
   border-radius: 10px;
 }
 .quizzContainer .questions .answers {
-  background-color: #555555;
+  background-color: inherit;
   margin: 10px 10px;
 }
 .quizzContainer .questions label {
-  background-color: #555555;
+  background-color: inherit;
 }
 .quizzContainer .questions .questionsAnswers {
-  background-color: #555555;
+  background-color: inherit;
   display: flex;
   justify-content: center;
 }
 .quizzContainer .questions #currentQuestion {
-  background-color: #555555;
+  background-color: inherit;
 }
 .quizzContainer .questions #maxQuestions {
-  background-color: #555555;
+  background-color: inherit;
 }
 .quizzContainer .questions .question {
-  background-color: #555555;
+  background-color: inherit;
   padding: 10px 20px;
 }
 .quizzContainer .questions .next_button_question {
@@ -283,13 +290,13 @@
   display: inline-block;
   width: 80px;
   height: 80px;
-  background-color: #555555;
+  background-color: inherit;
 }
 
 .loading_questions:after {
   content: " ";
   display: block;
-  background-color: #555555;
+  background-color: inherit;
   width: 50px;
   height: 50px;
   margin: 8px;
@@ -367,7 +374,7 @@
   display: none;
 }
 .quizzContainer .result .score {
-  background-color: #555555;
+  background-color: inherit;
   display: flex;
   justify-content: center;
   padding: 10px 20px;
@@ -375,16 +382,16 @@
 .quizzContainer .result .answersFinal {
   width: 50%;
   margin: 1rem auto;
-  background-color: #555555;
+  background-color: inherit;
   display: flex;
   justify-content: space-between;
 }
 .quizzContainer .result .answersFinal .correctAnswers {
   margin-bottom: 1rem;
-  background-color: #555555;
+  background-color: inherit;
 }
 .quizzContainer .result .answersFinal .wrongAnswers {
-  background-color: #555555;
+  background-color: inherit;
 }
 .quizzContainer .result a {
   text-decoration: none;

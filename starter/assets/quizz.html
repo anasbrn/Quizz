@@ -8,20 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>QuizzYD</title>
 </head>
-<body class="quizz">
-   
+<body class="quizz" id="quizz">
+    <div class="navbar">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul style="list-style: none; display: flex; padding: 0;">
+                <li style="margin-right: 5px;"><a href="../../index.html" style="text-decoration: none; color: white;" id="homeBreadcrumbs">Home</a></li>
+                <li style="margin-right: 5px;">/</li>
+                <li style="margin-right: 5px; color: gray;">Quizz</li>
+            </ul>
+        </div>
+        <div class="logo"><img src="/design/img/logo.svg" alt="" width="400">
+        </div>
+        <div class="lightmode" id="lightmode" onclick="lightmodeQuizz()"><i class="fa fa-sun"></i></div>
+        <div style="display: none;" class="darkmode" id="darkmode" onclick="darkmodeQuizz()"><i class="fa fa-moon"></i></div>
+    </div>
 
-    <div class="quizzContainer">
+    <div class="stepperComponentParent">
         <div class="stepperComponent">
             <div id="step1" class="step1">1</div>
             <div id="step2" class="step2">2</div>
             <div id="step3" class="step3">3</div>
         </div>
-        <div class="titlesStepper">
+    </div>
+
+    <div class="titlesStepperParent">
+        <div class="titlesStepper" id="titlesStepper">
             <div class="">Rules</div>
             <div class="">Questions</div>
             <div class="">Result</div>
         </div>
+    </div>
+
+    <div class="quizzContainer">
 
 
         <section class="userName" id="userName">
@@ -42,7 +60,7 @@
         <div id="rules" class="rules">
             <div class="titles">QuizzYD Rules</div>
             <p>1. You have 30 secondes in every question.</p>
-            <p>2. You can't back into the previous question if you click "Next".</p>
+            <p>2. You can't pass to the next question until you answer.</p>
             <p>3. You can't see your score until the end of the quizz.</p>
             <p>4. You have 1 point for every correct question.</p>
             <div  class="next_button">
@@ -99,8 +117,8 @@
                     <div class="barLevel"></div>
                 </div>
                 <div class="QuestionsButtons">
-                    <button id="nextQuestion" class="next_button_question" onclick="determineTheCorrectanswer(); loadingQuestions(); progressBar(); allQuestions(); countDownQuestions()">Next question</button>
-                    <button id="submit" style="display: none;" onclick="stepperCompenantStep3(); determineTheCorrectanswer(); progressBar(); switchFromQuestionsToResult()">Submit</button>
+                    <button id="nextQuestion" class="next_button_question" onclick="emptyAnswer()">Next question</button>
+                    <button id="submit" style="display: none;" onclick="emptyLastAnswer()">Submit</button>
                     <button id="reset" class="reset" onclick="deselectChosenQuestions()">Reset</button>
                 </div>
             </div>
