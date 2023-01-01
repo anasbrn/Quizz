@@ -45,6 +45,7 @@
 }
 
 .quizz {
+  margin: 0;
   background-image: url(/design/img/backgroundDarkMode.svg);
   background-size: 80%;
 }
@@ -69,10 +70,11 @@
 
 .stepperComponent {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 40%;
 }
-.stepperComponent div {
+.stepperComponent .steps {
   background-color: black;
   color: white;
   padding: 10px;
@@ -80,30 +82,24 @@
   border-radius: 50%;
   text-align: center;
   position: relative;
+  z-index: 1;
 }
-.stepperComponent div::after {
-  content: "";
-  width: 13.75rem;
-  height: 5px;
-  background-color: black;
-  position: absolute;
-  right: 2rem;
-  bottom: 1rem;
+.stepperComponent .line1 {
+  height: 0.2rem;
+  background: black;
+  width: 50%;
 }
-.stepperComponent div.step1::after {
-  width: 0;
-  height: 0;
+.stepperComponent .line2 {
+  height: 0.2rem;
+  background: black;
+  width: 50%;
 }
-.stepperComponent div.active {
+.stepperComponent .active {
   background-color: #23BE75;
   transition: 0.6s;
 }
-.stepperComponent div.active::after {
-  background-color: #23BE75;
-  transition: 0.6s;
-}
-.stepperComponent div i {
-  background-color: #23BE75;
+.stepperComponent .fa-check {
+  transform: 0.6s;
 }
 
 .titlesStepperParent {
@@ -179,7 +175,7 @@
 
 #counter {
   display: none;
-  background-color: inherit;
+  background-color: #555555;
   padding: 5px 10px;
   border-radius: 10px;
   width: 60%;
@@ -255,10 +251,9 @@
 
 .bar {
   display: none;
-  width: 60%;
-  margin-top: 2rem;
-  height: 1rem;
-  background-color: black;
+  width: 100%;
+  margin: 0;
+  height: 0.2rem;
   border-radius: 10px;
   color: white;
 }

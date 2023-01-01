@@ -64,6 +64,7 @@
 }
 
 .quizz{
+    margin: 0;
     background-image: url(/design/img/backgroundDarkMode.svg);
     background-size: 80%;
     
@@ -96,12 +97,13 @@
 
 .stepperComponent{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     width: 40%;
     // position: fixed;
     // top: 5%;
     
-    div{
+    .steps{
         background-color: $dark;
         color: $text;
         padding: 10px;
@@ -109,40 +111,30 @@
         border-radius: 50%;
         text-align: center;
         position: relative;
+        z-index: 1;
+    }
 
-        &::after{
-            content: "";
-            width: 13.75rem;
-            height: 5px;
-            background-color: $dark;
-            position: absolute;
-            right: 2rem;
-            bottom: 1rem;
-        }
+    .line1{
+        height: .2rem;
+        background: $dark;
+        width: 50%;
+        // z-index: -1;
+    }
 
-        &.step1::after{
-            width: 0;
-            height: 0;
-        }
+    .line2{
+        height: .2rem;
+        background: $dark;
+        width: 50%;
+        // z-index: -1;
+    }
 
-        &.active{
-            background-color: $buttons;
-            transition: .6s;
+    .active{
+        background-color: $buttons;
+        transition: .6s;
+    }
 
-            &::after{
-                background-color: $buttons;
-                transition: .6s;
-
-            }
-        }
-
-        // span{
-        //     // background-color: $dark;
-        // }
-        
-        i{
-            background-color: $buttons;
-        }
+    .fa-check{
+        transform: .6s;
     }
 
 
@@ -225,7 +217,7 @@
 //counter start quizz
 #counter{
     display: none;
-    background-color: inherit;
+    background-color: $content;
     padding: 5px 10px;
     border-radius: 10px; 
     width: 60%;
@@ -323,10 +315,10 @@
 //progress bar
 .bar {
     display: none;
-    width: 60%;
-    margin-top: 2rem;
-    height: 1rem;
-    background-color: $dark;
+    width: 100%;
+    margin: 0;
+    height: .2rem;
+    // background-color: $dark;
     border-radius: 10px;
     color: $text;
   }

@@ -33,6 +33,7 @@ function lightmodeQuizz(){
     let rules  = document.getElementById('rules') ;
     let questions = document.getElementById('questions') ;
     let counter = document.getElementById('counter') ;
+    let counterText = document.getElementById('secondes') ;
     let result = document.getElementById('result') ;
     let timerQuestions = document.getElementById('timerQuestions') ;
     let homeBreadcrumbs = document.getElementById('homeBreadcrumbs') ;
@@ -44,6 +45,7 @@ function lightmodeQuizz(){
     rules.style.background = "#CBD5E1" ;
     questions.style.background = "#CBD5E1" ;
     counter.style.background = "#CBD5E1" ;
+    counterText.style.color = "black" ;
     result.style.background = "#CBD5E1" ;
     rules.style.color = "black" ;
     questions.style.color = "black" ;
@@ -64,6 +66,7 @@ function darkmodeQuizz(){
     let rules  = document.getElementById('rules') ;
     let questions = document.getElementById('questions') ;
     let counter = document.getElementById('counter') ;
+    let counterText = document.getElementById('secondes') ;
     let result = document.getElementById('result') ;
     let timerQuestions = document.getElementById('timerQuestions') ;
     let homeBreadcrumbs = document.getElementById('homeBreadcrumbs') ;
@@ -74,6 +77,7 @@ function darkmodeQuizz(){
     rules.style.background = "#555555" ;
     questions.style.background = "#555555" ;
     counter.style.background = "#555555" ;
+    counterText.style.color = "white" ;
     result.style.background = "#555555" ;
     rules.style.color = "white" ;
     questions.style.color = "white" ;
@@ -254,7 +258,7 @@ function changeProgress(maxValue,finalValue){
     const barLevel = document.querySelector('.barLevel');
     
     barLevel.style.width =`${(maxValue * 100) / finalValue}%`;
-    barLevel.innerHTML   =`${Number((maxValue * 100) / finalValue)}%`;
+    // barLevel.innerHTML   =`${Number((maxValue * 100) / finalValue)}%`;
     
 }
 
@@ -412,13 +416,14 @@ function stepperCompenantStep1(){
 }
 function stepperCompenantStep2(){
     document.getElementById('step2').classList.add('active') ;
+    document.getElementById('line1').classList.add('active') ;
     document.getElementById('step2').innerHTML = `<i class="fa fa-check"></i>`;
     
 }
 
 function stepperCompenantStep3(){
     document.getElementById('step3').classList.add('active') ;
-    // document.getElementById('step3').innerText = "" ;
+    document.getElementById('line2').classList.add('active') ;
     document.getElementById('step3').innerHTML = `<i class="fa fa-check"></i>`;
     
 }

@@ -9,6 +9,9 @@
     <title>QuizzYD</title>
 </head>
 <body class="quizz" id="quizz">
+    <div class="bar" id="bar">
+        <div class="barLevel"></div>
+    </div>
     <div class="navbar">
         <div class="breadcrumbs" id="breadcrumbs">
             <ul style="list-style: none; display: flex; padding: 0;">
@@ -25,15 +28,18 @@
 
     <div class="stepperComponentParent">
         <div class="stepperComponent">
-            <div id="step1" class="step1">1</div>
-            <div id="step2" class="step2">2</div>
-            <div id="step3" class="step3">3</div>
+            <div id="step1" class="steps">1</div>
+            <div class="line1" id="line1"></div>
+            <div id="step2" class="steps">2</div>
+            <div class="line2" id="line2"></div>
+            <div id="step3" class="steps">3</div>
         </div>
     </div>
 
     <div class="titlesStepperParent">
         <div class="titlesStepper" id="titlesStepper">
             <div class="">Rules</div>
+            
             <div class="">Questions</div>
             <div class="">Result</div>
         </div>
@@ -77,7 +83,7 @@
         <div id="questions" class="questions">
             <div class="titles">Choose the correct answer</div>
             <div id="questionsAnswers">
-                <div class="timerQuestions" id="timerQuestions">Timer:
+                <div class="timerQuestions" id="timerQuestions">
                     <div class="timerQuestionsSecondes" id="timerQuestionsSecondes">10</div>
                 </div>
 
